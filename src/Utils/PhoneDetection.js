@@ -1,5 +1,5 @@
 import {
-//   mobileModel,
+  mobileModel,
   isIOS,
   isMobileOnly,
   mobileVendor,

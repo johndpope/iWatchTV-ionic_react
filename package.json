@@ -1,7 +1,11 @@
 {
   "name": "react-iwatchtv",
-  "version": "0.1.0",
+  "version": "0.1.11",
   "private": true,
+  "author": "Mig Tam Rod",
+  "repository": {
+    "url": "https://github.com/migtam628/iWatchTV-ionic_react"
+  },
   "dependencies": {
     "@capacitor/core": "1.2.1",
     "@capacitor/ios": "^1.2.1",
@@ -39,7 +43,6 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "1.2.1",
-    "terser-brunch": "^3.0.0"
+    "@capacitor/cli": "1.2.1"
   }
 }
