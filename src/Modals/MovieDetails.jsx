@@ -5,7 +5,7 @@ import ThumbSlider from '../Components/ThumbSlider';
 import YoutubeTrailers from '../Components/YoutubeTrailers';
 import propTypes from "prop-types";
 import { MovieDetail } from '../Components/MovieDetail';
-// import { VideoPlayer } from '../Components/VideoPlayer';
+import { VideoPlayer } from '../Components/VideoPlayer';
 import Cast from '../Components/Cast';
 
 const MovieDetails = ({ match }) => {
@@ -30,6 +30,7 @@ const MovieDetails = ({ match }) => {
             <IonContent className="ContentBackground" style={{ textAlign: 'center' }}>
                 <MovieDetail movie={movie} />
                 <YoutubeTrailers id={id} />
+                <VideoPlayer stream={1} id={movie.imdb_id} />
                 <Cast id={id} />
                 <ThumbSlider title={'Similar'} url={`https://api.themoviedb.org/3/movie/${id}/similar?api_key=046fdb0d753c6903e673934705cb553f&language=en-US&page=1`} />
                 <ThumbSlider title={'Recommended'} url={`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=046fdb0d753c6903e673934705cb553f&language=en-US&page=1`} />
