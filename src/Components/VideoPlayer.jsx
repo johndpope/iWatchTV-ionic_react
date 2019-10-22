@@ -16,13 +16,18 @@ export const VideoPlayer = (props) => {
             <IonButtons>
                 <IonButton onClick={handleClick}>Change Player</IonButton>
             </IonButtons>
-            {stream === 1 ?
-                <iframe title={imdb_id} src={`https://database.gdriveplayer.us/player.php?imdb=${imdb_id}`} height={'300px'} width={'100%'} frameBorder='0' />
+            {
+                stream === 1 ?
+                <iframe title={imdb_id} src={`https://database.gdriveplayer.us/player.php?imdb=${imdb_id}`} 
+                height={'300px'} width={'100%'}
+                loading="lazy"
+                allowFullScreen={true}
+                frameBorder="0" />
                 :
                 stream === 2 ?
-                    <iframe title={imdb_id} src={`https://gomostream.com/movie/${imdb_id}`} height={'300px'} width={'100%'} frameBorder='0' loading="lazy" allowFullScreen={true} />
-                    :
-                    <iframe title={imdb_id} src={`http://movie2konline.net/api/openload.php?id=${imdb_id}`} height={'300px'} width={'100%'} frameBorder='0' loading="lazy" allowFullScreen={true} sandbox="allow-scripts allow-same-origin" />
+                <iframe title={imdb_id} src={`https://gomostream.com/movie/${imdb_id}`} height={'300px'} width={'100%'} frameBorder='0' loading="lazy" allowFullScreen={true} sandbox="allow-scripts allow-same-origin allow-top-navigation allow-forms" />
+                :
+                <iframe title={imdb_id} src={`http://movie2konline.net/api/openload.php?id=${imdb_id}`} height={'300px'} width={'100%'} frameBorder='0' loading="lazy" allowFullScreen={true} sandbox="allow-scripts allow-same-origin allow-top-navigation allow-forms"/>
             }
         </div>
     )
