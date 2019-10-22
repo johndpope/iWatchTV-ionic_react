@@ -50,7 +50,7 @@ const Loading = () => (
     <ContentLoader>
       {/* Only SVG shapes */}    
       {/* <rect x="0" y="0" rx="5" ry="5" width="70" height="70" /> */}
-      <rect x="0" y="0" rx="5" ry="5" width="100%" height="240" />
+      <rect x="0" y="0" rx="5" ry="5" width="100%" height="100%" />
       {/* <rect x="80" y="40" rx="3" ry="3" width="250" height="10" /> */}
     </ContentLoader>
   )
