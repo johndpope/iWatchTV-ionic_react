@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-iwatchtv"]=this["webpackJsonpreact-iwatchtv"]||[]).push([[5],{217:function(t,n,e){"use strict";e.r(n),e.d(n,"startStatusTap",(function(){return i}));var c=e(27),i=(e(3),function(){var t=window;t.addEventListener("statusTap",(function(){Object(c.g)((function(){var n=t.innerWidth,e=t.innerHeight,i=document.elementFromPoint(n/2,e/2);if(i){var o=i.closest("ion-content");o&&o.componentOnReady().then((function(){Object(c.m)((function(){return o.scrollToTop(300)}))}))}}))}))})}}]);
+//# sourceMappingURL=5.fa8e873e.chunk.js.map

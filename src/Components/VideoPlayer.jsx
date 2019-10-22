@@ -7,7 +7,7 @@ export const VideoPlayer = (props) => {
     const [stream, setStream] = React.useState(props.stream);
 
     const handleClick = (click) => {
-        stream === 1 ? setStream(2) : setStream(1)
+        stream === 0 ? setStream(1) : stream === 1 ? setStream(2) : setStream(0)
     }
 
     return (
@@ -20,7 +20,7 @@ export const VideoPlayer = (props) => {
     <iframe title={imdb_id} src={`https://database.gdriveplayer.us/player.php?imdb=${imdb_id}`} height={'300px'} width={'100%'} frameBorder='0' />
     :
     stream === 2 ?
-        <iframe title={imdb_id} src={`https://gomostream.com/movie/${imdb_id}`} height={'300px'} width={'100%'} frameBorder='0' loading="lazy" allowFullScreen={true} sandbox="allow-scripts allow-same-origin"/>
+        <iframe title={imdb_id} src={`https://gomostream.com/movie/${imdb_id}`} height={'300px'} width={'100%'} frameBorder='0' loading="lazy" allowFullScreen={true}/>
         :
         <iframe title={imdb_id} src={`http://movie2konline.net/api/openload.php?id=${imdb_id}`} height={'300px'} width={'100%'} frameBorder='0' loading="lazy" allowFullScreen={true} sandbox="allow-scripts allow-same-origin" />
 }
