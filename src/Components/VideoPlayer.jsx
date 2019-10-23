@@ -13,7 +13,7 @@ export const VideoPlayer = (props) => {
     React.useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        }, 1600)
+        }, 1540)
     }, [loading])
 
     return (

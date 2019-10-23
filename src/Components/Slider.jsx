@@ -33,7 +33,7 @@ const Slides = (props) => {
     React.useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        }, 1000)
+        }, 1550)
     }, [loading])
     return (
         loading === true ? 

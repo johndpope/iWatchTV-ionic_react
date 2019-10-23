@@ -9,7 +9,7 @@ const YoutubeTrailers = (props) => {
     React.useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        }, 1800)
+        }, 1530)
     }, [loading])
     React.useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=046fdb0d753c6903e673934705cb553f&language=en-US`)
