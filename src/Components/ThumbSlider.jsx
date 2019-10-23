@@ -36,7 +36,7 @@ const Thumbnails = (props) => {
                     <div className='thumbCard'>
                         <div>
                             <h5 className='noScrollbar'><Skeleton width="20vw" /></h5>
-                            <Skeleton height="17vh" width="20vw" widthRandomness="0" heightRandomness="0" borderRadius="10px" /><br />
+                            <Skeleton height="17vh" width="22vw" widthRandomness="0" heightRandomness="0" borderRadius="10px" /><br />
                             <h6 className='thumbDate'><Skeleton width="20vw" /></h6>
                             <h6 className='thumbVote'><Skeleton width="15vw" /></h6>
                         </div>
