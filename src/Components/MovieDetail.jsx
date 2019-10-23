@@ -7,13 +7,11 @@ import Skeleton from 'react-skeleton-loader';
 
 export const MovieDetail = ({movie}) => {
     const [loading, setLoading] = React.useState(true)
-    let l = {overview: '12345'};
     React.useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-            console.log(l.overview)
-        }, 2000)
-    }, [loading, l])
+        }, 1000)
+    }, [loading])
     return (
         loading === true ?
             <div>
