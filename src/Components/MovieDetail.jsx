@@ -1,11 +1,11 @@
 import React from 'react'
-import { IonCardSubtitle, IonCardTitle, IonImg, IonIcon } from '@ionic/react';
+import { IonCardSubtitle, IonCardTitle, IonIcon } from '@ionic/react';
 import NumberFormat from 'react-number-format';
 import { star } from 'ionicons/icons';
 import propTypes from 'prop-types';
 import Skeleton from 'react-skeleton-loader';
 
-export const MovieDetail = ({movie}) => {
+export const MovieDetail = ({ movie }) => {
     const [loading, setLoading] = React.useState(true)
     React.useEffect(() => {
         setTimeout(() => {
@@ -24,8 +24,12 @@ export const MovieDetail = ({movie}) => {
             </div>
             :
             <div>
-                <IonImg className="movieBackDrop" src={'https://image.tmdb.org/t/p/original/' + movie.backdrop_path} alt="" />
-                <img className="moviePoster" src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path} alt="" />
+                <div className="movieBackDrop">
+                    <img className="movieBackDrop" src={'https://image.tmdb.org/t/p/original/' + movie.backdrop_path} alt="" /> 
+                </div>
+                {/* <div className="moviePoster"> */}
+                    <img className="moviePoster" src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path} alt="" />
+                {/* </div> */}
                 <IonCardTitle class="ion-padding">{movie.title}</IonCardTitle>
                 <IonCardSubtitle>Released: {movie.release_date}</IonCardSubtitle>
                 <IonCardSubtitle class="ion-padding">{movie.overview}</IonCardSubtitle>
