@@ -10,7 +10,7 @@ export const MovieDetail = ({ movie }) => {
     React.useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        }, 1000)
+        }, 1200)
     }, [loading])
     return (
         loading === true ?

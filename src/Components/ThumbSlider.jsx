@@ -26,7 +26,7 @@ const Thumbnails = (props) => {
     React.useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        }, 1000)
+        }, 1400)
     }, [loading])
 
     return (
