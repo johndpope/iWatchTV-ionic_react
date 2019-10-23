@@ -24,12 +24,10 @@ export const MovieDetail = ({ movie }) => {
             </div>
             :
             <div>
-                <div className="movieBackDrop">
+                <div className="BackDropBox">
                     <img className="movieBackDrop" src={'https://image.tmdb.org/t/p/original/' + movie.backdrop_path} alt="" /> 
                 </div>
-                {/* <div className="moviePoster"> */}
-                    <img className="moviePoster" src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path} alt="" />
-                {/* </div> */}
+                <img className="moviePoster" src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path} alt="" />
                 <IonCardTitle class="ion-padding">{movie.title}</IonCardTitle>
                 <IonCardSubtitle>Released: {movie.release_date}</IonCardSubtitle>
                 <IonCardSubtitle class="ion-padding">{movie.overview}</IonCardSubtitle>
