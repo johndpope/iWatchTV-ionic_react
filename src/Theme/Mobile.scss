@@ -97,6 +97,15 @@
       width: auto;
     }
   
+    .movieOverview { 
+      height: 20vh;
+      width: 100%;
+      color: #1f1f1f;
+      overflow-y: scroll;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
     .trailers {
       display: flex;
       scroll-behavior: smooth;

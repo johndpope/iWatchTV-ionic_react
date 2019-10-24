@@ -18,20 +18,22 @@ export const CastDetail = ({ cast }) => {
                 <Skeleton height="35vh" width="100%" widthRandomness="0" /><br /><br /><br />
                 <IonCardTitle><Skeleton width="70vw" /></IonCardTitle><br />
                 <IonCardSubtitle><Skeleton width="50vw" /></IonCardSubtitle><br />
-                <IonCardSubtitle><Skeleton count={10} width="80vw" /></IonCardSubtitle><br />
+                <IonCardSubtitle><Skeleton count={9} width="80vw" /></IonCardSubtitle><br />
                 <IonCardSubtitle><Skeleton count={3} width="30vw" /></IonCardSubtitle>
 
             </div>
             :
             <div>
                 <div className="BackDropBox">
-                    <img className="movieBackDrop" src={'https://image.tmdb.org/t/p/original/' + cast.profile_path} alt="" /> 
+                    <img className="movieBackDrop" src={'https://image.tmdb.org/t/p/original/' + cast.profile_path} alt="" />
                 </div>
                 <img className="moviePoster" src={'https://image.tmdb.org/t/p/w500/' + cast.profile_path} alt="" />
                 <IonCardTitle class="ion-padding">{cast.name}</IonCardTitle>
                 <IonCardSubtitle>Birthday: {cast.birthday}</IonCardSubtitle>
                 <IonCardSubtitle>Birth place: {cast.place_of_birth}</IonCardSubtitle>
-                <IonCardSubtitle class="ion-padding">{cast.biography}</IonCardSubtitle>
+                <div className="movieOverview" >
+                    <IonCardSubtitle class="ion-padding">{cast.biography}</IonCardSubtitle>
+                </div>
                 <IonCardSubtitle>rating: <IonIcon icon={star}></IonIcon> {cast.vote_average}</IonCardSubtitle>
                 <NumberFormat value={cast.revenue} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <IonCardSubtitle>revenue: {value}</IonCardSubtitle>} />
             </div>

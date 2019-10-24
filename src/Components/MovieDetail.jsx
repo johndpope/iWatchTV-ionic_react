@@ -18,7 +18,7 @@ export const MovieDetail = ({ movie }) => {
                 <Skeleton height="35vh" width="100%" widthRandomness="0" /><br /><br /><br />
                 <IonCardTitle><Skeleton width="70vw" /></IonCardTitle><br />
                 <IonCardSubtitle><Skeleton width="50vw" /></IonCardSubtitle><br />
-                <IonCardSubtitle><Skeleton count={10} width="80vw" /></IonCardSubtitle><br />
+                <IonCardSubtitle><Skeleton count={9} width="80vw" /></IonCardSubtitle><br />
                 <IonCardSubtitle><Skeleton count={3} width="30vw" /></IonCardSubtitle>
 
             </div>
@@ -30,7 +30,9 @@ export const MovieDetail = ({ movie }) => {
                 <img className="moviePoster" src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path} alt="" />
                 <IonCardTitle class="ion-padding">{movie.title}</IonCardTitle>
                 <IonCardSubtitle>Released: {movie.release_date}</IonCardSubtitle>
-                <IonCardSubtitle class="ion-padding">{movie.overview}</IonCardSubtitle>
+                <div className="movieOverview" >
+                    <IonCardSubtitle class="ion-padding">{movie.overview}</IonCardSubtitle>
+                </div>
                 <IonCardSubtitle>length: {movie.runtime} mins</IonCardSubtitle>
                 <IonCardSubtitle>rating: <IonIcon icon={star}></IonIcon> {movie.vote_average}</IonCardSubtitle>
                 <NumberFormat value={movie.revenue} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <IonCardSubtitle>revenue: {value}</IonCardSubtitle>} />

@@ -4,8 +4,6 @@ import { star } from 'ionicons/icons';
 import propTypes from "prop-types";
 import { randomNum } from '../Utils/Utilities';
 import Skeleton from 'react-skeleton-loader';
-import { CSSTransitionGroup } from 'react-transition-group'
-import ImageCarousel from '../Components/Carousel'
 
 const Slider = (props) => (
     <div className="slider-wrapper HomeSliderContainer">
