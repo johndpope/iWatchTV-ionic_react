@@ -11,8 +11,8 @@
     "@capacitor/ios": "^1.2.1",
     "@ionic/react": "^4.11.1",
     "@ionic/react-router": "^4.11.1",
+    "compass-mixins": "^0.12.10",
     "ionicons": "^4.6.3",
-    "node-sass": "^4.12.0",
     "react": "^16.10.2",
     "react-content-loader": "^4.3.2",
     "react-device-detect": "^1.9.10",
@@ -45,6 +45,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "1.2.1"
+    "@capacitor/cli": "1.2.1",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0"
   }
 }

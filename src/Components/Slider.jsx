@@ -6,8 +6,10 @@ import { randomNum } from '../Utils/Utilities';
 import Skeleton from 'react-skeleton-loader';
 
 const Slider = (props) => (
-    <div className="HomeSliderContainer">
-        <div className="swiper-container">
+    <div className="slider-wrapper HomeSliderContainer">
+    <div className="swiper-container slider">
+    {/* <div className="slider-wrapper"> */}
+        {/* <div className="slider "> */}
             <Slides url={props.url} />
         </div>
     </div>
@@ -16,7 +18,7 @@ const Slider = (props) => (
 const Slides = (props) => {
     const [state, setState] = React.useState({ movies: [], error: false })
     let url = props.url;
-    const number = [{}, {}, {}, {}, {}];
+    const skeleton = [{}, {}, {}, {}, {}];
     React.useEffect(() => {
         fetch(url)
             .then(response => {
@@ -36,27 +38,24 @@ const Slides = (props) => {
         }, 1550)
     }, [loading])
     return (
-        loading === true ? 
-        number.map(() => (
-            <div key={randomNum(0, 9999)} className="swiper-slide slide">
-                        <div className={''} style={{ backgroundColor: '#fff', borderRadius: '10px' }}>
-                            <div>
-                                <div className="SlideSubTitle">
-                                    <p className="SlideSubTitleText"><Skeleton/></p>
-                                </div>
-                                <div className="SlideImg"><Skeleton width="100%" widthRandomness="0" /></div>
-                                <h6 className='thumbDate'><Skeleton/></h6>
-                                <h6 className='thumbVote'><Skeleton/></h6>
-                            </div>
+        loading === true ?
+            skeleton.map(() => (
+                <div key={randomNum(0, 9999)} className="swiper-slide" style={{ backgroundColor: '#fff', borderRadius: '10px' }}>
+                    <div>
+                        <div className="SlideSubTitle">
+                            <p className="SlideSubTitleText"><Skeleton /></p>
                         </div>
+                        <div className="SlideImg"><Skeleton width="100%" widthRandomness="0" /></div>
+                        <h6 className='thumbDate'><Skeleton /></h6>
+                        <h6 className='thumbVote'><Skeleton /></h6>
                     </div>
-        ))
-        :
-        state.movies.length !== 0 ?
-            state.movies.map(({ backdrop_path, title, id, release_date, vote_average, poster_path }) =>
-                backdrop_path === null || backdrop_path === undefined ? null :
-                    <div key={id + randomNum} className="swiper-slide slide">
-                        <div className={''} style={{ backgroundColor: '#fff', borderRadius: '10px' }}>
+                </div>
+            ))
+            :
+            state.movies[0] !== null || state.movies[0] !== undefined ?
+                state.movies.map(({ backdrop_path, title, id, release_date, vote_average, poster_path }) =>
+                    backdrop_path === null || backdrop_path === undefined ? null :
+                        <div key={id + randomNum} className={`swiper-slide slide slidein`} style={{ backgroundColor: '#fff', borderRadius: '10px' }}>
                             <a href={'/movie/' + id}>
                                 <div className="SlideSubTitle">
                                     <p className="SlideSubTitleText">{title}</p>
@@ -66,9 +65,8 @@ const Slides = (props) => {
                                 <h6 className='thumbVote'><IonIcon icon={star} />{vote_average}</h6>
                             </a>
                         </div>
-                    </div>
-            ) :
-            <IonCardSubtitle>No Movies</IonCardSubtitle>
+                ) :
+                <IonCardSubtitle>No Movies</IonCardSubtitle>
     )
 
 }

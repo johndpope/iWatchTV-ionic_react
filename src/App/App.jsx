@@ -35,7 +35,7 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 /* Theme variables */
 import '../Theme/App.scss';
-import '../Theme/Swiper.scss';
+
 
 const App = (props) => {
 
