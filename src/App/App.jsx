@@ -19,6 +19,7 @@ import ShowDetails from '../Modals/ShowDetails';
 import ChDetails from '../Modals/ChDetails';
 import SportDetails from '../Modals/SportDetails';
 import AnimeDetails from '../Modals/AnimeDetails';
+import CastDetails from '../Modals/CastDetails';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -55,6 +56,7 @@ const App = (props) => {
             <Route path="/sport/:id" component={SportDetails} /> 
             <Route path="/live/ch/:id" component={ChDetails} /> 
             <Route path="/anime/:id" component={AnimeDetails} /> 
+            <Route path="/cast/:id" component={CastDetails} /> 
             <Route path="/settings" component={Settings} /> 
             <Route path="/search" component={Search} /> 
             <Route path="/account" component={Account} /> 

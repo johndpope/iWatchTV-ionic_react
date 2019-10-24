@@ -6,8 +6,8 @@ import ThumbSlider from '../Components/ThumbSlider';
 import { randomNum } from '../Utils/Utilities';
 // import Footer from '../Components/Footer'
 
-const ran1 = randomNum(1, 10)
-const ran2 = randomNum(1, 10)
+const ran1 = randomNum(1, 5)
+const ran2 = randomNum(1, 5)
 
 const Home = () => {
     return (

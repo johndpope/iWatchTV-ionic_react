@@ -1,9 +1,11 @@
 @import "./Desktop.scss";
 @import "./Mobile.scss";
 @import "./Swiper.scss";
+
 // @import "./Carousel.scss";
 
 // NO SCROLL
 .noScrollbar::-webkit-scrollbar {
     display: none;
 }
+

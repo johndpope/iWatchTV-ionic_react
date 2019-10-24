@@ -15,7 +15,12 @@ const Thumbnails = (props) => {
                 return response.json();
             })
             .then(data => {
-                setState({ movies: data.results });
+                data.results !== undefined ?
+                    setState({ movies: data.results })
+                    :
+                    data.cast !== undefined ?
+                        setState({ movies: data.cast })
+                        : setState({movies: []})
             })
             .catch(error => {
                 setState({ error: true });
@@ -57,7 +62,7 @@ const Thumbnails = (props) => {
                             </a>
                         </div>
                     </div>
-                )) : <IonCardTitle style={{ marginLeft: '34%', marginTop: 100}}>No Movies</IonCardTitle>
+                )) : <IonCardTitle style={{ marginLeft: '34%', marginTop: 100 }}>No Movies</IonCardTitle>
     )
 }
 

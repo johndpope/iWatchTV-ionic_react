@@ -32,7 +32,7 @@ const CastMembers = (props) => {
                 <div key={randomNum(0, 999999)} className=''>
                     <div className='thumbCard'>
                         <div>
-                            <h5 className='noScrollbar'><Skeleton width="20vw" /></h5>
+                            <h5><Skeleton width="20vw" /></h5>
                             <Skeleton height="17vh" width="22vw" widthRandomness="0" heightRandomness="0" borderRadius="10px" /><br />
                             <h6 className='thumbDate'><Skeleton width="20vw" /></h6>
                         </div>
@@ -43,7 +43,7 @@ const CastMembers = (props) => {
             state.cast.map(({ name, id, character, profile_path }) => (
                 <div key={id + randomNum(100, 99999)} className=''>
                     <div className='thumbCard'>
-                        <a href={`/movie/` + id}>
+                        <a href={`/cast/` + id}>
                             <h5 className='thumbTitle noScrollbar'>{name}</h5>
                             <img className='thumbImg' src={"https://image.tmdb.org/t/p/w500/" + profile_path} alt={id} />
                             <h6 className='thumbDate'>{character}</h6>
