@@ -40,7 +40,7 @@ const Seasons = (props) => {
             data.map((season) => {
                 // var name = String(season.title).toString();
                 return (
-                    <IonItem key={season.id} data-id={season.id} onClick={() => { }}>
+                    <IonItem key={season.id} data-id={season.id} onClick={click => SelectSeason(season.id, season.title)}>
                         <IonThumbnail slot="start"> <img className="seasonImg" src={season.poster} alt="no" style={{boderRadius:'20px'}} /> </IonThumbnail>
                         <IonLabel><IonCardSubtitle>{season.title}</IonCardSubtitle></IonLabel>
                     </IonItem>
@@ -50,6 +50,10 @@ const Seasons = (props) => {
          </IonList>
          </div>
     )
+    async function SelectSeason(id, title) {
+        console.log(id, title)
+        alert(title)
+    }
             
 }
 Seasons.propTypes = {
