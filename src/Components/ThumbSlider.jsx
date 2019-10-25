@@ -6,34 +6,35 @@ import { randomNum } from '../Utils/Utilities';
 import Skeleton from 'react-skeleton-loader';
 
 const Thumbnails = (props) => {
-    const [state, setState] = React.useState({ movies: [], error: false })
-    let url = props.url;
-    const number = [{}, {}, {}, {}, {}];
-    React.useEffect(() => {
-        fetch(url)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                data.results !== undefined ?
-                    setState({ movies: data.results })
-                    :
-                    data.cast !== undefined ?
-                        setState({ movies: data.cast })
-                        : setState({movies: []})
-            })
-            .catch(error => {
-                setState({ error: true });
-            });
-    }, [url])
-
     const [loading, setLoading] = React.useState(true)
+    const [state, setState] = React.useState({ data: [], error: false })
+    let url = props.url;
+    let path = props.path;
+    const number = [{}, {}, {}, {}, {}];
+    async function Fetch(url) {
+        fetch(url)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            data.results !== undefined ?
+                setState({ data: data.results })
+                :
+                data.cast !== undefined ?
+                    setState({ data: data.cast })
+                    : setState({ data: [] })
+        })
+        .catch(error => {
+            setState({ error: true });
+        });
+    }
     React.useEffect(() => {
+        Fetch(url);
         setTimeout(() => {
             setLoading(false)
         }, 1510)
-    }, [loading])
-
+    }, [loading, url])
+    var image;
     return (
         loading === true ?
             number.map(() => (
@@ -48,32 +49,35 @@ const Thumbnails = (props) => {
                     </div>
                 </div>
             ))
-
             :
-            state.movies.length !== 0 ?
-                state.movies.map(({ title, id, vote_average, release_date, poster_path }) => (
-                    <div key={id} className=''>
-                        <div className='thumbCard'>
-                            <a href={`/movie/` + id}>
-                                <h5 className='thumbTitle noScrollbar'>{title}</h5>
-                                <img className='thumbImg' src={"https://image.tmdb.org/t/p/w500/" + poster_path} alt={id} />
-                                <h6 className='thumbDate'>{release_date}</h6>
-                                <h6 className='thumbVote'><IonIcon icon={star} />{vote_average}</h6>
-                            </a>
-                        </div>
-                    </div>
-                )) : <IonCardTitle style={{ marginLeft: '34%', marginTop: 100 }}>No Movies</IonCardTitle>
+            state.data !== null && state.data[0] !== null ?
+                state.data.map(({ title, name, id, vote_average, release_date, poster_path, backdrop_path }) => {
+                    poster_path === null && backdrop_path !== null ? image = backdrop_path : poster_path === null && backdrop_path === null ? image = null : image = poster_path;
+                    return image !== null ?
+                        <div key={id} className=''>
+                            <div className='thumbCard'>
+                                <a href={`/${path}/` + id}>
+                                    <h5 className='thumbTitle noScrollbar'>{title || name}</h5>
+                                    <img className='thumbImg' src={"https://image.tmdb.org/t/p/w500/" + image} alt={id} />
+                                    <h6 className='thumbDate'>{release_date}</h6>
+                                    <h6 className='thumbVote'><IonIcon icon={star} />{vote_average}</h6>
+                                </a>
+                            </div>
+                        </div> : null
+
+                }) : <IonCardTitle style={{ marginLeft: '34%', marginTop: 100 }}>No Data</IonCardTitle>
     )
 }
 
 const ThumbSlider = (props) => {
     let url = props.url;
+    let path = props.path;
     let title = props.title;
     return url !== '' ?
         <div>
             <IonCardSubtitle style={{ marginBottom: -15, paddingTop: 20 }}>{title}</IonCardSubtitle>
             <div className='thumbSlider noScrollbar'>
-                <Thumbnails url={url} />
+                <Thumbnails url={url} path={path} />
             </div>
         </div>
         :
@@ -86,7 +90,8 @@ ThumbSlider.propTypes = {
     title: propTypes.string.isRequired
 }
 Thumbnails.propTypes = {
-    url: propTypes.string.isRequired
+    url: propTypes.string.isRequired,
+    path: propTypes.string.isRequired
 }
 
 export default ThumbSlider;

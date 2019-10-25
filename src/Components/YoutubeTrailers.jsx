@@ -6,13 +6,15 @@ const YoutubeTrailers = (props) => {
     const id = props.id;
     const [videos, setVideos] = React.useState([])
     const [loading, setLoading] = React.useState(true)
+    let type = props.type;
+    var url = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=046fdb0d753c6903e673934705cb553f&language=en-US`
     React.useEffect(() => {
         setTimeout(() => {
             setLoading(false)
         }, 1530)
     }, [loading])
     React.useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=046fdb0d753c6903e673934705cb553f&language=en-US`)
+        fetch(url)
             .then(res => {
                 return res.json();
             })
@@ -22,7 +24,7 @@ const YoutubeTrailers = (props) => {
             .catch(error => {
                 console.log(error)
             })
-    }, [id])
+    }, [url])
     return (
         loading === true ?
             <div style={{ paddingTop: 40, paddingBottom: 20 }}>
@@ -40,7 +42,7 @@ const YoutubeTrailers = (props) => {
                 </div>
             </div>
             :
-            videos.length !== 0 ?
+            videos !== undefined || videos !== [] ?
                 <div style={{ paddingTop: 40, paddingBottom: 20 }}>
                     <IonCardSubtitle>Trailers</IonCardSubtitle>
                     <div className="trailers noScrollbar">

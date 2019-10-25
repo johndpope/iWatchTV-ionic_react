@@ -1,7 +1,5 @@
 import React from 'react'
-import { IonCardSubtitle, IonCardTitle, IonIcon } from '@ionic/react';
-import NumberFormat from 'react-number-format';
-import { star } from 'ionicons/icons';
+import { IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import propTypes from 'prop-types';
 import Skeleton from 'react-skeleton-loader';
 
@@ -20,7 +18,6 @@ export const CastDetail = ({ cast }) => {
                 <IonCardSubtitle><Skeleton width="50vw" /></IonCardSubtitle><br />
                 <IonCardSubtitle><Skeleton count={9} width="80vw" /></IonCardSubtitle><br />
                 <IonCardSubtitle><Skeleton count={3} width="30vw" /></IonCardSubtitle>
-
             </div>
             :
             <div>
@@ -34,14 +31,12 @@ export const CastDetail = ({ cast }) => {
                 <div className="movieOverview" >
                     <IonCardSubtitle class="ion-padding">{cast.biography}</IonCardSubtitle>
                 </div>
-                <IonCardSubtitle>rating: <IonIcon icon={star}></IonIcon> {cast.vote_average}</IonCardSubtitle>
-                <NumberFormat value={cast.revenue} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <IonCardSubtitle>revenue: {value}</IonCardSubtitle>} />
             </div>
     )
 }
 
 CastDetail.propTypes = {
-    movie: propTypes.oneOfType([
+    cast: propTypes.oneOfType([
         propTypes.object.isRequired,
         propTypes.array.isRequired,
     ]),

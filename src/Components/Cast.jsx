@@ -5,11 +5,12 @@ import { randomNum } from '../Utils/Utilities';
 import Skeleton from 'react-skeleton-loader';
 
 const CastMembers = (props) => {
-    const [state, setState] = React.useState({ cast: [{}], error: false })
+    const [state, setState] = React.useState({ cast: [], error: false })
     let ID = props.id;
-    const number = [{}, {}, {}, {}, {}]
+    let type = props.type;
+    const number = [1, 2, 3, 4, 5]
     React.useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/${ID}/credits?api_key=046fdb0d753c6903e673934705cb553f`)
+        fetch(`https://api.themoviedb.org/3/${type}/${ID}/credits?api_key=046fdb0d753c6903e673934705cb553f`)
             .then(response => {
                 return response.json();
             })
@@ -19,7 +20,7 @@ const CastMembers = (props) => {
             .catch(error => {
                 setState({ error: true });
             });
-    }, [ID])
+    }, [ID, type])
     const [loading, setLoading] = React.useState(true)
     React.useEffect(() => {
         setTimeout(() => {
@@ -58,11 +59,12 @@ const CastMembers = (props) => {
 const Cast = (props) => {
     let id = props.id
     let title = 'Cast';
+    let type = props.type;
     return id !== '' ?
         <div>
             <IonCardSubtitle style={{ marginBottom: -15, paddingTop: 20 }}>{title}</IonCardSubtitle>
             <div className='thumbSlider noScrollbar'>
-                <CastMembers id={id} />
+                <CastMembers id={id} type={type} />
             </div>
         </div>
         :
