@@ -51,8 +51,7 @@ const Seasons = (props) => {
          </div>
     )
     async function SelectSeason(id, title) {
-        console.log(id, title)
-        alert(title)
+        
     }
             
 }
@@ -60,3 +59,12 @@ Seasons.propTypes = {
     show: propTypes.string
 }
 export default Seasons
+
+// const Episodes = (id) => {
+
+//     return (
+//         <div>
+
+//         </div>
+//     )
+// }
