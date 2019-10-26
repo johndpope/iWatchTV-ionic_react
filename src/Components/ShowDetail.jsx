@@ -12,7 +12,7 @@ export const ShowDetail = ({ show }) => {
         }, 1520)
     }, [loading])
     return (
-        loading === true ?
+        loading === true  ?
             <div>
                 <Skeleton height="35vh" width="100%" widthRandomness="0" /><br /><br /><br />
                 <IonCardTitle><Skeleton width="70vw" /></IonCardTitle><br />

@@ -12,21 +12,21 @@ const Thumbnails = (props) => {
     let path = props.path;
     const number = [{}, {}, {}, {}, {}];
     async function Fetch(url) {
-        fetch(url)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            data.results !== undefined ?
-                setState({ data: data.results })
-                :
-                data.cast !== undefined ?
-                    setState({ data: data.cast })
-                    : setState({ data: [] })
-        })
-        .catch(error => {
-            setState({ error: true });
-        });
+        await fetch(url)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                data.results !== undefined ?
+                    setState({ data: data.results })
+                    :
+                    data.cast !== undefined ?
+                        setState({ data: data.cast })
+                        : setState({ data: [] })
+            })
+            .catch(error => {
+                setState({ error: true });
+            });
     }
     React.useEffect(() => {
         Fetch(url);
@@ -53,7 +53,7 @@ const Thumbnails = (props) => {
             state.data !== null && state.data[0] !== null ?
                 state.data.map(({ title, name, id, vote_average, release_date, poster_path, backdrop_path }) => {
                     poster_path === null && backdrop_path !== null ? image = backdrop_path : poster_path === null && backdrop_path === null ? image = null : image = poster_path;
-                    return image !== null ?
+                    return (
                         <div key={id} className=''>
                             <div className='thumbCard'>
                                 <a href={`/${path}/` + id}>
@@ -63,7 +63,7 @@ const Thumbnails = (props) => {
                                     <h6 className='thumbVote'><IonIcon icon={star} />{vote_average}</h6>
                                 </a>
                             </div>
-                        </div> : null
+                        </div>)
 
                 }) : <IonCardTitle style={{ marginLeft: '34%', marginTop: 100 }}>No Data</IonCardTitle>
     )

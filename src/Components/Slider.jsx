@@ -1,9 +1,11 @@
 import React from 'react';
-import { IonIcon, IonCardSubtitle } from '@ionic/react';
+import { IonIcon, } from '@ionic/react';
 import { star } from 'ionicons/icons';
 import propTypes from "prop-types";
 import { randomNum } from '../Utils/Utilities';
 import Skeleton from 'react-skeleton-loader';
+
+var loaded = false;
 
 const Slider = (props) => (
     <div className="slider-wrapper HomeSliderContainer">
@@ -17,7 +19,7 @@ const Slides = (props) => {
     const [state, setState] = React.useState({ movies: [], error: false })
     let url = props.url;
     const skeleton = [{}, {}, {}, {}, {}];
-    React.useEffect(() => {
+    async function Fetch(url) {
         fetch(url)
             .then(response => {
                 return response.json();
@@ -28,13 +30,12 @@ const Slides = (props) => {
             .catch(error => {
                 setState({ error: true });
             });
+    }
+    React.useEffect(() => {
+        Fetch(url)
     }, [url])
     const [loading, setLoading] = React.useState(true)
-    React.useEffect(() => {
-        setTimeout(() => {
-            setLoading(false)
-        }, 1550)
-    }, [loading])
+
     const Movies = () => state.movies.map(({ backdrop_path, title, id, release_date, vote_average, poster_path }) => (
         <div key={id + randomNum} className={`swiper-slide slide slidein`} style={{ backgroundColor: '#fff', borderRadius: '10px' }}>
             <a href={'/movie/' + id}>
@@ -59,14 +60,16 @@ const Slides = (props) => {
             </div>
         </div>
     ))
+    React.useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+            loaded = true;
+        }, 1550)
+    }, [loading])
     return (
-        loading === true ?
+        loading === true && loaded === false && state.movies ?
             <LoadingSkeleton />
-            :
-            state.movies[0] !== undefined ?
-                <Movies />
-                :
-                <IonCardSubtitle>No Movies</IonCardSubtitle>
+            : <Movies />
     )
 
 }
