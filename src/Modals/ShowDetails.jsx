@@ -54,39 +54,6 @@ const ShowDetails = ({ match }) => {
 
 export default ShowDetails;
 
-// function calTotalSeasons(seasons) {
-//     var total = seasons.length;
-//     return Number(total);
-// }
-
-// const Episodes = (props) => {
-//     const Show = props.show;
-//     const [data, setData] = React.useState([{}])
-//     const [error, setError] = React.useState(false)
-//     const url = `https://iwatchtv-backend.web.app/api/shows?search=`;
-//     const name = Show.name;
-//     const edited = name.replace("Marvel's", '') + ' - season';
-//     var now;
-//     if (name.includes("Marvel's")) {
-//         now = edited.substring(1, edited.length);
-//     } else {
-//         now = edited.substring(0, edited.length);
-//     }
-//     const encodedQuery = encodeURI(now).trim();
-
-//     React.useEffect(() => {
-//         fetch(url + encodedQuery)
-//             .then(res => { return res.json() })
-//             .then(data => { setData(data); console.log(data.Response) })
-//             .catch(error => { setError(true); console.log(error) })
-//     })
-
-//     return (
-//         <div>
-
-//         </div>
-//     )
-// }
 
 
 ShowDetails.propTypes = {

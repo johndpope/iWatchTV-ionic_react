@@ -11,8 +11,8 @@ const Thumbnails = (props) => {
     let url = props.url;
     let path = props.path;
     const number = [{}, {}, {}, {}, {}];
-    async function Fetch(url) {
-        await fetch(url)
+    function Fetch(url) {
+        fetch(url)
             .then(response => {
                 return response.json();
             })

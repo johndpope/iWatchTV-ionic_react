@@ -19,7 +19,7 @@ const Slides = (props) => {
     const [state, setState] = React.useState({ movies: [], error: false })
     let url = props.url;
     const skeleton = [{}, {}, {}, {}, {}];
-    async function Fetch(url) {
+    function Fetch(url) {
         fetch(url)
             .then(response => {
                 return response.json();
