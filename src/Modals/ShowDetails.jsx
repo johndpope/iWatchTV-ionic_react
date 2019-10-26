@@ -1,5 +1,5 @@
 import { IonContent, IonPage } from '@ionic/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import BackToolbar from '../Components/BackToolbar'
 import ThumbSlider from '../Components/ThumbSlider';
 import YoutubeTrailers from '../Components/YoutubeTrailers';
@@ -8,12 +8,12 @@ import { ShowDetail } from '../Components/ShowDetail';
 // import { ShowPlayer } from '../Components/VideoPlayer';
 import Cast from '../Components/Cast';
 import Seasons from '../Components/Seasons'
-//  search: 'https://iwatchtv-backend.firebaseapp.com/api/shows?search=', //https://api.gdriveplayer.us/v1/series/search?title=family%20guy
-//  details: 'https://iwatchtv-backend.firebaseapp.com/api/shows/details?search=', //https://api.gdriveplayer.us/v1/series/id/238
-//  player: `https://database.gdriveplayer.us//player.php?type=series&id=${this.state.currentSeason.id}&episode=${this.state.currentEpisode.id}`
+import { ShowPlayer } from '../Components/VideoPlayer';
 
 const ShowDetails = ({ match }) => {
     const id = match.params.id;
+    var episodeToWatch = 1;
+    const [ Url, setUrl ] = useState(``)
     const [show, setShow] = React.useState([])
     async function Fetch(id) {
         fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=046fdb0d753c6903e673934705cb553f&language=en-US`)
@@ -31,8 +31,9 @@ const ShowDetails = ({ match }) => {
         Fetch(id)
     }, [id])
     let name = show.name;
-    const VideoPlayerURL = (props) => {
-
+    const VideoPlayerURL = (id) => {
+        setUrl(`https://database.gdriveplayer.us/player.php?type=series&id=${id}&episode=${episodeToWatch}`)
+        console.log(Url)
     }
     return (
         <IonPage>
@@ -40,10 +41,8 @@ const ShowDetails = ({ match }) => {
             <IonContent className="ContentBackground" style={{ textAlign: 'center' }}>
                 <ShowDetail show={show} />
                 <YoutubeTrailers id={id} type="tv" />
-                {/* <ShowPlayer id={show.imdb_id} episode={'1'} /> */}
+                <ShowPlayer url={Url}/>
                 <Seasons show={name} callback={event => VideoPlayerURL(event)}/>
-                {/* <Episodes show={show} id={id} /> */}
-                
                 <Cast id={id} type="tv" />
                 <ThumbSlider title={'Similar'} path="show" url={`https://api.themoviedb.org/3/tv/${id}/similar?api_key=046fdb0d753c6903e673934705cb553f&language=en-US&page=1`} />
                 <ThumbSlider title={'Recommended'} path="show" url={`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=046fdb0d753c6903e673934705cb553f&language=en-US&page=1`} />

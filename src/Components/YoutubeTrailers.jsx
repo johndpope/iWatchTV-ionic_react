@@ -1,7 +1,7 @@
 import React from 'react'
 import { IonCardSubtitle } from '@ionic/react';
 import Skeleton from 'react-skeleton-loader';
-
+var loaded = false;
 const YoutubeTrailers = (props) => {
     const id = props.id;
     const [videos, setVideos] = React.useState([])
@@ -25,8 +25,20 @@ const YoutubeTrailers = (props) => {
                 console.log(error)
             })
     }, [url])
+    loaded = true;
     return (
-        loading === true ?
+        loading === false && loaded === true && (videos !== [] || videos !== undefined || videos !== null) ?
+            <div style={{ paddingTop: 40, paddingBottom: 20 }}>
+                <IonCardSubtitle>Trailers</IonCardSubtitle>
+                <div className="trailers noScrollbar">
+                    {videos.map(({ key, id }) => (
+                        <iframe key={key} title={id} width="120vw" height="120vh" frameBorder='0' style={{ padding: 5 }}
+                            src={'https://www.youtube.com/embed/' + key}>
+                        </iframe>
+                    ))}
+                </div>
+            </div>
+            :
             <div style={{ paddingTop: 40, paddingBottom: 20 }}>
                 <IonCardSubtitle>Trailers</IonCardSubtitle>
                 <div className="trailers noScrollbar">
@@ -41,19 +53,7 @@ const YoutubeTrailers = (props) => {
                     </div>
                 </div>
             </div>
-            :
-            videos !== undefined || videos !== [] ?
-                <div style={{ paddingTop: 40, paddingBottom: 20 }}>
-                    <IonCardSubtitle>Trailers</IonCardSubtitle>
-                    <div className="trailers noScrollbar">
-                        {videos.map(({ key, id }) => (
-                            <iframe key={key} title={id} width="120vw" height="120vh" frameBorder='0' style={{ padding: 5 }}
-                                src={'https://www.youtube.com/embed/' + key}>
-                            </iframe>
-                        ))}
-                    </div>
-                </div>
-                : <IonCardSubtitle>no trailers available</IonCardSubtitle>
+
     )
 
 }

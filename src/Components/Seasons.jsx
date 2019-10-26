@@ -10,6 +10,7 @@ var loaded = false;
 // var seasonsID = null;
 
 const Seasons = (props) => {
+    const callback = props.callback;
     var name = String(props.show).toString();
     var number = [1, 2, 3, 4, 5]
     const [data, setData] = React.useState([])
@@ -41,7 +42,7 @@ const Seasons = (props) => {
                     data.map((season) => {
                         // var name = String(season.title).toString();
                         return (
-                            <IonItem key={season.id} data-id={season.id} onClick={click => SelectSeason(season.id, season.title)}>
+                            <IonItem key={season.id} data-id={season.id} onClick={() => callback(season.id)}>
                                 <IonThumbnail slot="start"> <img className="seasonImg" src={season.poster} alt="no" style={{ boderRadius: '20px' }} /> </IonThumbnail>
                                 <IonLabel><IonCardSubtitle>{season.title}</IonCardSubtitle></IonLabel>
                             </IonItem>
@@ -66,9 +67,7 @@ const Seasons = (props) => {
             </IonList>
         </div>
     )
-    async function SelectSeason(id, title) {
 
-    }
 
 }
 Seasons.propTypes = {
