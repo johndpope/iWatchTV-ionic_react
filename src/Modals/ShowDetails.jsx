@@ -44,8 +44,8 @@ const ShowDetails = ({ match }) => {
                 <ShowPlayer url={Url}/>
                 <Seasons show={name} callback={event => VideoPlayerURL(event)}/>
                 <Cast id={id} type="tv" />
-                <ThumbSlider title={'Similar'} path="show" url={`https://api.themoviedb.org/3/tv/${id}/similar?api_key=046fdb0d753c6903e673934705cb553f&language=en-US&page=1`} />
-                <ThumbSlider title={'Recommended'} path="show" url={`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=046fdb0d753c6903e673934705cb553f&language=en-US&page=1`} />
+                <ThumbSlider title={'Similar'} path="tv" url={`https://api.themoviedb.org/3/tv/${id}/similar?api_key=046fdb0d753c6903e673934705cb553f&language=en-US&page=1`} />
+                <ThumbSlider title={'Recommended'} path="tv" url={`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=046fdb0d753c6903e673934705cb553f&language=en-US&page=1`} />
             </IonContent>
         </IonPage>
     );
